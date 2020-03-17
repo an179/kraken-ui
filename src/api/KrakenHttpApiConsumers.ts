@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import { KrakenAssetPairsResult } from './KrakenOutputTypes';
-import { CurrencyPair } from './KrakenDataTypes';
+import { KrakenAssetPairsResult } from '../types/KrakenOutputTypes';
+import { CurrencyPair } from '../types/KrakenDataTypes';
 
 const useFetch = (url: string) => {
     const [response, setResponse] = useState({error: [], result: {}});
     const proxy = "https://cors-anywhere.herokuapp.com/"
     useEffect(() => { 
         const fetchData = async () => {
-            const res = await fetch(proxy + url);
-            const json = await res.json();
-            setResponse(json);
+            setResponse(await fetch(proxy + url).then(res => res.json()));
         }
         fetchData();
     }, [url]);

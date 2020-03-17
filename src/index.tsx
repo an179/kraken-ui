@@ -1,12 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { combineReducers, createStore, Reducer } from 'redux';
+import { tickerReducer } from './redux/reducers/DataUpdateReducer';
+import { Provider } from 'react-redux';
+import {KrakenBlotterState} from './redux/state/StateTypes'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const initialState: KrakenBlotterState = {
+    tickerData: []
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const reducers: Reducer<KrakenBlotterState> = combineReducers<KrakenBlotterState>({
+    tickerData: tickerReducer
+});
+
+const store = createStore(
+    reducers,
+    initialState
+);
+
+render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root')
+);

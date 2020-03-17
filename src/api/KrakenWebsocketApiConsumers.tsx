@@ -1,4 +1,4 @@
-import { SubscriptionEvent, KrakenSubscription } from './KrakenSubscriptionTypes';
+import { SubscriptionEvent, KrakenSubscription } from '../types/KrakenSubscriptionTypes';
 import { useKrakenCurrencyPairs } from './KrakenHttpApiConsumers';
 
 export const useSubscriptionTo = (subscriptionType: KrakenSubscription) => {
@@ -10,6 +10,7 @@ export const useSubscriptionTo = (subscriptionType: KrakenSubscription) => {
             name: subscriptionType
         }
     }
+
     krakenSocket.onopen = () => krakenSocket.send(JSON.stringify(subscriptionEvent))
     krakenSocket.onerror = (errorEvent: Event) => console.error("Ticker socket encountered error: " + errorEvent);
     krakenSocket.onclose = (closeEvent: CloseEvent) => console.log("Ticker socket closed: " + closeEvent)

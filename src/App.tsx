@@ -1,25 +1,22 @@
+import TickerBlotter from './components/TickerBlotter';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { KrakenBlotterState } from './redux/state/StateTypes';
+import { transformTickerData } from './redux/TickerTypes'
+import { TickerBlotterColDefs } from './TickerBlotterColDefs';
+
+import { TickerDetailsForAgGrid } from './redux/TickerTypes';
+
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return(
+        <TickerBlotter 
+            select = {(state: KrakenBlotterState) => state.tickerData} 
+            getRowNodeId={(data: TickerDetailsForAgGrid) => data.currencyPair}
+            transform = {transformTickerData}
+            columnDefs = {TickerBlotterColDefs}
+        />
+    );
 }
 
-export default App;
+export default App

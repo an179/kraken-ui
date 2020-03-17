@@ -1,4 +1,4 @@
-import { CurrencyPair } from "./KrakenDataTypes";
+import { CurrencyPair } from "../../types/KrakenCommonDataTypes";
 
 export type KrakenSubscription = "ticker"|"ohlc"|"trade"|"book"|"spread"|"ownTrades"|"openOrders"|"*"
 

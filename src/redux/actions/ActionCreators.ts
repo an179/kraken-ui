@@ -1,9 +1,9 @@
-import {DATA_CHANGE, TickerDataChangeAction} from './ActionsTypes';
-import { Ticker } from '../TickerTypes';
+import {BLOTTER_UPDATE, BlotterUpdateAction} from './ActionsTypes';
+import { TreeStructuredData } from '../../types/CommonTypes';
 
-export const changeData = function (data: Ticker): TickerDataChangeAction {
+export const updateData = function <T extends TreeStructuredData>(data: T): BlotterUpdateAction<T> {
     return {
-        type: DATA_CHANGE,
+        type: BLOTTER_UPDATE,
         payload: data
     }
 }

@@ -1,4 +1,4 @@
-import { CurrencyPair } from "./KrakenDataTypes";
+import { CurrencyPair } from "../../types/KrakenCommonDataTypes";
 
 interface KrakenCurrencyPair {
     wsname: CurrencyPair

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { KrakenAssetPairsResult } from '../types/KrakenOutputTypes';
-import { CurrencyPair } from '../types/KrakenDataTypes';
+import { KrakenAssetPairsResult } from './types/KrakenAssetPairsOutputTypes';
+import { CurrencyPair } from '../types/KrakenCommonDataTypes';
 
 const useFetch = (url: string) => {
     const [response, setResponse] = useState({error: [], result: {}});
@@ -12,7 +12,7 @@ const useFetch = (url: string) => {
         fetchData();
     }, [url]);
     return response;
-  };
+};
 
 export const useKrakenCurrencyPairs = (): CurrencyPair[] => {
     const assetPairs: KrakenAssetPairsResult = useFetch("https://api.kraken.com/0/public/AssetPairs")

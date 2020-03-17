@@ -1,8 +1,8 @@
-import { Ticker } from "../TickerTypes";
+import { TreeStructuredData } from "../../types/CommonTypes";
 
-export const DATA_CHANGE = 'DATA_CHANGE';
+export const BLOTTER_UPDATE = 'BLOTTER_UPDATE';
 
-export interface TickerDataChangeAction {
-    type: typeof DATA_CHANGE
-    payload: Ticker
+export interface BlotterUpdateAction<T extends TreeStructuredData> {
+    type: typeof BLOTTER_UPDATE
+    payload: T
 }

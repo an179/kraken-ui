@@ -1,6 +1,6 @@
-import { Ticker } from "../TickerTypes"
+import { Ticker, TickerDetailsForAgGrid } from "../TickerTypes"
 
-export type TickerDataState = Ticker[]
+export type TickerDataState = TickerDetailsForAgGrid[]
 
 export interface KrakenBlotterState {
     tickerData: TickerDataState

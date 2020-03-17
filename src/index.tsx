@@ -1,20 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/TickerBlotter';
 import { combineReducers, createStore, Reducer } from 'redux';
-import { tickerReducer } from './redux/reducers/DataUpdateReducer';
+import { krakenBlotterReducer } from './redux/reducers/BlotterDataUpdateReducer';
 import { Provider } from 'react-redux';
-import {KrakenBlotterState, TickerDataState} from './redux/state/StateTypes'
+import {KrakenBlotterRootState } from './redux/stateTypes/StateTypes'
+import { TransformedTickerDetails } from './types/KrakenTickerTypes';
+import { BlotterData } from './types/CommonTypes';
 
-const initalTickerDataState: TickerDataState = []
+const initalTickerDataState: BlotterData<TransformedTickerDetails> = []
 
-const initialState: KrakenBlotterState = {
+const initialState: KrakenBlotterRootState = {
     tickerData: initalTickerDataState
 }
 
-const reducers: Reducer<KrakenBlotterState> = combineReducers<KrakenBlotterState>({
-    tickerData: tickerReducer
+const reducers: Reducer<KrakenBlotterRootState> = combineReducers<KrakenBlotterRootState>({
+    tickerData: krakenBlotterReducer
 });
 
 const store = createStore(

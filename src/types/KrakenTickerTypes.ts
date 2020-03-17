@@ -1,37 +1,8 @@
-export type Ticker = [BigInteger, TickerDetails, string, string]
+import {Price, WholeLotVolume, LotVolume, HistoricLotVolume, HistoricPrice, TradeCount, HistoricTradeCount} from './CommonTypes';
+import {TreeStructuredData} from './CommonTypes'
+import {Ticker} from '../api/types/KrakenTickerOutputTypes';
 
-interface TickerDetails {
-    a: Ask
-    b: Bid
-    c: Close
-    v: Volume
-    p: VolumeWeightedAveragePrice
-    t: NumberOfTrades
-    l: LowPrice
-    h: HighPrice
-    o: OpenPrice
-}
-
-type Ask = [Price, WholeLotVolume, LotVolume]
-type Bid = [Price, WholeLotVolume, LotVolume]
-type Close = [Price, LotVolume]
-type Volume = [LotVolume, HistoryicLotVolume]
-type VolumeWeightedAveragePrice = [Price, HistoricPrice]
-type NumberOfTrades = [TradeCount, HistoricTradeCount]
-type LowPrice = [Price, HistoricPrice]
-type HighPrice = [Price, HistoricPrice]
-type OpenPrice = [Price, HistoricPrice]
-
-type Price = Number
-type HistoricPrice = Number
-type WholeLotVolume = BigInteger
-type LotVolume = Number
-type HistoryicLotVolume = Number
-type TradeCount = BigInteger
-type HistoricTradeCount = BigInteger
-
-export interface TickerDetailsForAgGrid {
-    currencyPair: string
+export interface TransformedTickerDetails extends TreeStructuredData {
 
     askPrice: Price
     askWholeLotVolume: WholeLotVolume
@@ -45,7 +16,7 @@ export interface TickerDetailsForAgGrid {
     closeLotVolume: LotVolume
 
     volume: LotVolume
-    historicVolume: HistoryicLotVolume
+    historicVolume: HistoricLotVolume
 
     volumeWeightedAveragePrice: Price
     historicVolumeWeightedAveragePrice: HistoricPrice
@@ -63,7 +34,7 @@ export interface TickerDetailsForAgGrid {
     historicOpenPrice: HistoricPrice
 }
 
-export const transformTickerData = (data: Ticker): TickerDetailsForAgGrid => {
+export const transformTickerData = (data: Ticker): TransformedTickerDetails => {
     return {
         currencyPair: data[3],
 

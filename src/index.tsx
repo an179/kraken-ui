@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
-import App from './components/TickerBlotter';
+import App from './components/TickerBlotter/TickerBlotter';
 import { combineReducers, createStore, Reducer } from 'redux';
 import { krakenBlotterReducer } from './redux/reducers/BlotterDataUpdateReducer';
 import { Provider } from 'react-redux';

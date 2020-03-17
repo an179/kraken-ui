@@ -1,4 +1,4 @@
-import TickerBlotter from "./components/TickerBlotter";
+import TickerBlotter from "./components/TickerBlotter/TickerBlotter";
 import React from 'react';
 
 function App () {

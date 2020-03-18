@@ -15,12 +15,12 @@
     "ag-grid-community": "^22.1.1",
     "ag-grid-react": "^22.1.1",
     "deep-equal": "^2.0.1",
-    "jest": "^25.1.0",
+    "jest": "24.9.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-dom-factories": "^1.0.2",
     "react-redux": "^7.2.0",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^3.4.0",
     "redux": "^4.0.5"
   },
   "scripts": {

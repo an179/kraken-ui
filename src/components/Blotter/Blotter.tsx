@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles/Blotter.css';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import { GetRowNodeIdFunc, ColDef } from 'ag-grid-community';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-balham.css';
+import { GetRowNodeIdFunc, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react';
 import { useSelector } from 'react-redux';
 import { KrakenBlotterRootState } from '../../redux/stateTypes/StateTypes'
@@ -12,6 +12,10 @@ interface IBlotterProps<T extends TreeStructuredData> {
   getRowNodeId: GetRowNodeIdFunc
   columnDefs: ColDef[]
   select: (state: KrakenBlotterRootState) => BlotterData<T>,
+}
+
+const onGridReady = (event: GridReadyEvent) => {
+  event.api.sizeColumnsToFit()
 }
 
 function Blotter<T extends TreeStructuredData>(props: IBlotterProps<T>) {
@@ -27,6 +31,11 @@ function Blotter<T extends TreeStructuredData>(props: IBlotterProps<T>) {
         deltaRowDataMode={true}
         getRowNodeId= { props.getRowNodeId }
         enableCellChangeFlash={true}
+        showToolPanel={true}
+        enableFilter={true}
+        enableSorting={true}
+        enableColResize={true}
+        onGridReady={onGridReady}
       />
     </div>
   );

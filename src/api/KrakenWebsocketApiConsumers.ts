@@ -27,6 +27,7 @@ export const useSubscriptionTo = function <TRaw, TConverted extends TreeStructur
     }
     krakenSocket.onmessage = (messageEvent: MessageEvent) => {
         try {
+            console.log(messageEvent.data)
             const tickerData: TConverted = treeDataConverter(JSON.parse(messageEvent.data));
             dispatcher(updateData(tickerData));
         } catch (e) {

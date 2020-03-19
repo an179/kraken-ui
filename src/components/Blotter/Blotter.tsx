@@ -21,7 +21,6 @@ const onGridReady = (event: GridReadyEvent) => {
 function Blotter<T extends TreeStructuredData>(props: IBlotterProps<T>) {
 
   const data: BlotterData<T> = useSelector<KrakenBlotterRootState, BlotterData<T>>(props.select);
-  console.log(data)
   return (
     <div className="ag-theme-balham blotter">
       <AgGridReact

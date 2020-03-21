@@ -8,6 +8,6 @@ describe('actions', () => {
       type: ActionTypes.BLOTTER_UPDATE,
       payload: afakeBlotterItem
     }
-    expect(ActionCreators.updateData(afakeBlotterItem)).toEqual(fakeBlotterUpdateAction)
+    expect(ActionCreators.singleDataUpdate(afakeBlotterItem)).toEqual(fakeBlotterUpdateAction)
   })
 })

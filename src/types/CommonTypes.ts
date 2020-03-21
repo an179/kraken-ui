@@ -6,7 +6,7 @@ export type HistoricLotVolume = Number
 export type TradeCount = BigInteger
 export type HistoricTradeCount = BigInteger
 
-export type BlotterData<T extends TreeStructuredData> = T[]
+export type BlotterData<T> = T[]
 
 export interface TreeStructuredData{
     currencyPair: string

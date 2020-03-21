@@ -1,10 +1,9 @@
 import { SubscriptionEvent, KrakenSubscription } from './types/KrakenSubscriptionTypes';
 import { useKrakenCurrencyPairs } from './KrakenHttpApiConsumers';
-import { updateData } from '../redux/actions/ActionCreators';
 import { useDispatch } from 'react-redux';
-import { TreeStructuredData } from '../types/CommonTypes';
+import { KrakenBlotterActions } from '../redux/actions/ActionsTypes'
 
-export const useSubscriptionTo = function <TRaw, TConverted extends TreeStructuredData> (subscriptionType: KrakenSubscription, treeDataConverter: ((rawData: TRaw) => TConverted)) {    
+export const useSubscriptionTo = function <TRaw, TConverted> (subscriptionType: KrakenSubscription, treeDataConverter: ((rawData: TRaw) => TConverted), actionCreator: ((data: TConverted) => KrakenBlotterActions<TConverted> )) {    
     const dispatcher = useDispatch()
 
     const krakenSocket: WebSocket = new WebSocket("wss://ws.kraken.com");
@@ -27,9 +26,8 @@ export const useSubscriptionTo = function <TRaw, TConverted extends TreeStructur
     }
     krakenSocket.onmessage = (messageEvent: MessageEvent) => {
         try {
-            console.log(messageEvent.data)
-            const tickerData: TConverted = treeDataConverter(JSON.parse(messageEvent.data));
-            dispatcher(updateData(tickerData));
+            const data: TConverted | TConverted[] = treeDataConverter(JSON.parse(messageEvent.data));
+            dispatcher(actionCreator(data));
         } catch (e) {
             console.error('Unable to parse and dispatch ' + JSON.stringify(messageEvent))
         }

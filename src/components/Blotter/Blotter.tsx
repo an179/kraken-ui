@@ -6,9 +6,9 @@ import { GetRowNodeIdFunc, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react';
 import { useSelector } from 'react-redux';
 import { KrakenBlotterRootState } from '../../redux/stateTypes/StateTypes'
-import {BlotterData, TreeStructuredData} from '../../types/CommonTypes'
+import {BlotterData} from '../../types/CommonTypes'
 
-interface IBlotterProps<T extends TreeStructuredData> {
+interface IBlotterProps<T> {
   getRowNodeId: GetRowNodeIdFunc
   columnDefs: ColDef[]
   select: (state: KrakenBlotterRootState) => BlotterData<T>,
@@ -18,9 +18,10 @@ const onGridReady = (event: GridReadyEvent) => {
   event.api.sizeColumnsToFit()
 }
 
-function Blotter<T extends TreeStructuredData>(props: IBlotterProps<T>) {
+function Blotter<T>(props: IBlotterProps<T>) {
 
   const data: BlotterData<T> = useSelector<KrakenBlotterRootState, BlotterData<T>>(props.select);
+  console.log(data)
   return (
     <div className="ag-theme-balham blotter">
       <AgGridReact

@@ -1,9 +1,11 @@
 import React from 'react';
-import OhlcBlotter from "./components/OhlcBlotter/OhlcBlotter";
+import TradeBlotter from './components/TradeBlotter/TradeBlotter';
+import OhlcBlotter from './components/OhlcBlotter/OhlcBlotter';
+import TickerBlotter from './components/TickerBlotter/TickerBlotter';
 
 function App () {
 
-    return (<OhlcBlotter/>)
+    return (<TickerBlotter/>)
 }
 
 export default App;

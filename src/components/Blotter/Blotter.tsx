@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/Blotter.css';
 import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 import { GetRowNodeIdFunc, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react';
 import { useSelector } from 'react-redux';
@@ -23,7 +23,7 @@ function Blotter<T>(props: IBlotterProps<T>) {
   const data: BlotterData<T> = useSelector<KrakenBlotterRootState, BlotterData<T>>(props.select);
   console.log(data)
   return (
-    <div className="ag-theme-balham blotter">
+    <div className="ag-theme-balham-dark blotter">
       <AgGridReact
         columnDefs={props.columnDefs}
         rowData = {data}

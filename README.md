@@ -1,6 +1,6 @@
 ### Kraken UI
 
-This project creates a live ticker for bitcoin currency pair assets offered on [Kraken](https://www.kraken.com/).
+This project creates a live ticker, trade blotter, and spread blotter for bitcoin currency pair assets offered on [Kraken](https://www.kraken.com/).
 
 It is built with React (using hooks), Redux, and Typescript. It uses ag-grid. It uses [Kraken's Websocket API](https://docs.kraken.com/websockets/) to source ticker updates. The updates are fed into a Redux store which is watched by ag-grid.
 

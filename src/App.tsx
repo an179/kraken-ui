@@ -5,7 +5,7 @@ import TickerBlotter from './components/TickerBlotter/TickerBlotter';
 
 function App () {
 
-    return (<TickerBlotter/>)
+    return (<TradeBlotter/>)
 }
 
 export default App;

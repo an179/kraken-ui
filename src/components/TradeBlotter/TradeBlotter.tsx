@@ -12,7 +12,7 @@ function TradeBlotter() {
     return(
         <Blotter<TransformedTradeDetails> 
             select = {(state: KrakenBlotterRootState) => state.tradeData} 
-            getRowNodeId={(data: TransformedTradeDetails) => data.currencyPair}
+            getRowNodeId={(data: TransformedTradeDetails) => data.time.toString()}
             columnDefs = {TradeColDefs}
         />
     );

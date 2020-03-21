@@ -27,6 +27,7 @@ export const useSubscriptionTo = function <TRaw, TConverted> (subscriptionType: 
     krakenSocket.onmessage = (messageEvent: MessageEvent) => {
         try {
             const data: TConverted | TConverted[] = treeDataConverter(JSON.parse(messageEvent.data));
+            console.log(messageEvent.data)
             dispatcher(actionCreator(data));
         } catch (e) {
             console.error('Unable to parse and dispatch ' + JSON.stringify(messageEvent))

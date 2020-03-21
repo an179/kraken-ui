@@ -11,22 +11,26 @@ import { BlotterData } from './types/CommonTypes';
 import { TransformedOhlcDetails } from './types/KrakenOhlcTypes';
 import { TransformedTradeDetails } from './types/KrakenTradeTypes';
 import { bulkDataUpdateReducer } from './redux/reducers/BlotterBulkDataReducer';
+import { TransformedSpreadDetails } from './types/KrakenSpreadTypes';
 
 const initalTickerDataState: BlotterData<TransformedTickerDetails> = []
 const initialOhlcDataState: BlotterData<TransformedOhlcDetails> = []
 const initialTradeDataState: BlotterData<TransformedTradeDetails> = []
+const initialSpreadDataState: BlotterData<TransformedSpreadDetails> = []
 
 
 const initialState: KrakenBlotterRootState = {
     tickerData: initalTickerDataState,
     ohlcData: initialOhlcDataState,
-    tradeData: initialTradeDataState
+    tradeData: initialTradeDataState,
+    spreadData: initialSpreadDataState
 }
 
 const reducers: Reducer<KrakenBlotterRootState> = combineReducers<KrakenBlotterRootState>({
     tickerData: singleDataUpdateReducer,
     ohlcData: singleDataUpdateReducer,
-    tradeData: bulkDataUpdateReducer
+    tradeData: bulkDataUpdateReducer,
+    spreadData: singleDataUpdateReducer
 });
 
 const store = createStore(

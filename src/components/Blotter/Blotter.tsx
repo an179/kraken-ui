@@ -21,7 +21,6 @@ const onGridReady = (event: GridReadyEvent) => {
 function Blotter<T>(props: IBlotterProps<T>) {
 
   const data: BlotterData<T> = useSelector<KrakenBlotterRootState, BlotterData<T>>(props.select);
-  console.log(data)
   return (
     <div className="ag-theme-balham-dark blotter">
       <AgGridReact

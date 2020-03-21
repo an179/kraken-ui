@@ -3,7 +3,7 @@ import React from 'react';
 import { TradeColDefs } from './SpreadColDefs';
 import { useSubscriptionTo } from '../../api/KrakenWebsocketApiConsumers';
 import { KrakenBlotterRootState } from '../../redux/stateTypes/StateTypes'
-import { bulkDataUpdate, singleDataUpdate } from '../../redux/actions/ActionCreators';
+import { singleDataUpdate } from '../../redux/actions/ActionCreators';
 import { TransformedSpreadDetails, transformSpreadDetails } from '../../types/KrakenSpreadTypes';
 
 function SpreadBlotter() {
